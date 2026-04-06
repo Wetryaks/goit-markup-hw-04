@@ -126,16 +126,6 @@ img {
   padding-block: 24px;
 }
 
-.mail:hover,
-.mail:focus {
-  color: #404bbf;
-}
-
-.number:hover,
-.number:focus {
-  color: #404bbf;
-}
-
 .navigation {
   font-weight: 500;
   font-size: 16px;
@@ -154,10 +144,33 @@ img {
   letter-spacing: 0.02em;
   color: #2e2f42;
   padding-block: 24px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation-section.current {
+  color: #4d5ae5;
+  display: inline-block;
+  position: relative;
+}
+
+.navigation-section.current::after {
+  content: '';
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  background: #404bbf;
+  bottom: -1px;
+  left: 0;
+  border-radius: 2px;
 }
 
 .navigation-section:hover,
-.navigation-section:focus {
+.navigation-section:focus,
+.number:hover,
+.number:focus,
+.mail:hover,
+.mail:focus,
+.navigation-section.current {
   color: #404bbf;
 }
 
@@ -165,6 +178,13 @@ img {
 
 .hero {
   background: #2e2f42;
+  background-image:
+    linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+    url('../images/people-office.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 188px 0;
 }
 
@@ -265,6 +285,29 @@ img {
   color: #434455;
 }
 
+.social-list {
+  display: flex;
+  justify-content: center;
+  column-gap: 24px;
+}
+
+.social-list-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #4d5ae5;
+  fill: #f4f4fd;
+  border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-list-link:hover,
+.social-list-link:focus {
+  background-color: #404bbf;
+}
+
 /* features */
 
 .features {
@@ -274,11 +317,23 @@ img {
 .features-list {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 24px;
 }
 
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8e8f99;
+  border-radius: 4px;
+  width: 264px;
+  height: 112px;
+  background: #f4f4fd;
+}
+
 .features-item {
-  width: calc((100% - 24px * 3) / 4);
+  flex: 1 1 calc((100% - 72px) / 4);
 }
 
 .feature-name {
@@ -321,6 +376,41 @@ img {
   row-gap: 48px;
 }
 
+.portfolio-item {
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:hover,
+.portfolio-item:focus {
+  box-shadow:
+    0 2px 1px 0 rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16),
+    0 1px 6px 0 rgba(46, 47, 66, 0.08);
+}
+
+.overlay {
+  color: #f4f4fd;
+  background: #4d5ae5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
+  overflow: auto;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-item:hover .overlay {
+  transform: translateY(0%);
+}
+
 .portfolio-item-info {
   padding: 32px 16px;
   border-bottom: 1px solid #e7e9fc;
@@ -353,9 +443,10 @@ img {
 
 .footer-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   /* padding-block: 100px;
   padding-left: 156px;*/
+  gap: 120px;
 }
 
 .footer-text {
@@ -375,4 +466,56 @@ img {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #f4f4fd;
+}
+
+.footer-social-link {
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  fill: #f4f4fd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  background-color: #4d5ae5;
+  border-radius: 50%;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus {
+  background-color: #31d0aa;
+}
+
+.footer-social-link .icon {
+  fill: currentColor;
+}
+
+.footer-social-link {
+  color: #f4f4fd;
+}
+
+.footer-social-list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.footer-social-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.icon {
+  fill: #fff;
+}
+
+.social-box {
+  margin-right: 120px;
 }
